@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MiprimerApp.Models.Categorium>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Base de datos</h1>
+
+<p>
+    <a asp-action="Create" type="button" class="btn btn-outline-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear nueva tabla</font></font></a>
+</p>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .table > tbody > tr:nth-child(3n+1) > td {
+        background-color: lightcyan;
+    }
+
+    .table > tbody > tr:nth-child(3n+2) > td {
+        background-color: lightgoldenrodyellow;
+    }
+
+    .table > tbody > tr:nth-child(3n+3) > td {
+        background-color: lightblue;
+
+    }
+
+</style>
+<table class="table">
+    
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+                 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+                    <a asp-action="Edit" asp-route-id="@item.IdCategoria" type="button" class="btn btn-outline-info">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdCategoria" type="button" class="btn btn-outline-warning">Detalles</a>|
+                    <a asp-action="Delete" asp-route-id="@item.IdCategoria" type="button" class="btn btn-outline-danger">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
